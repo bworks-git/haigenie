@@ -1,0 +1,73 @@
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">Orders</div>
+		<div class="panel-body">
+			<div class="row">
+			<div class="col-md-12">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="search" placeholder="Search"></input>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<table class="table table-bordered">
+						<thead>
+							<th>S.No</th>
+							<th>Order Details</th>
+							<th>Address Details</th>
+							<th>Delivery</th>
+							<th>Status</th>
+							
+							
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, order) in orders| reverse|filter:search">
+								<td>{{ key+1 }}</td>
+								<td>
+									<div style="color:#4caf50;"><a href="#/order/{{ order._id }}">Order Id : {{ order._id }}</a> </div>
+									<div>Customer name 	 : {{ order.userName }}</div>
+									<div>Total Product 	 : {{ order.products.length }}</div>
+									<div>Shipping Charge : Rs .{{ order.shippingCharge }}</div>
+									<div>Total Amount 	 : Rs .{{ order.total }} (inc. ShippingCharge)</div>
+									<div>Mobile : {{ order.mobile  }}</div>
+									<div>Email : {{ order.email  }}</div>
+								</td>
+								<td>
+									
+									<div>{{ order.userName  }}</div>
+									<div>{{ order.doorNo  }}</div>
+									<div>{{ order.Street1  }}</div>
+									<div>{{ order.Street2 }}</div>
+									<div>{{ order.area  }}</div>
+									<div>{{ order.city  }}</div>
+									<div>{{ order.State  }}-{{ order.pincode }} .</div>
+									<div> LandMark :{{ order.landmark }},</div>
+									<div></div>
+								</td>
+								<td>
+									<div>Order Placed Date : <br/>{{ order.order_date }}</div>
+									<div>Estimated Delivery Date : <br/>{{ order.delivery_date }}</div>
+								</td>
+								<td>
+								<div style="font-weight: 700;"><h6>"{{ order.status }}"</h6></div>
+								<select ng-model="status">
+									<option value="accepted">Accepted</option>
+									<option value="packing">Packing</option>
+									<option value="ready for shipping">Ready for Shipping</option>
+									<option value="shipped">Shipped</option>
+									<option value="delivered">Delivered</option>
+									<option value="returned">Returned</option>
+									<option value="cancelled">Cancelled</option>
+								</select>
+
+								<button class="btn btn-primary" ng-click="changeStatus(order._id,status)">Change</button>
+
+								</td>
+								
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

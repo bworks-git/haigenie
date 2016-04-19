@@ -1,0 +1,26 @@
+{
+  "name": "haigenie",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.13.2",
+    "compression": "^1.6.1",
+    "cookie-parser": "~1.3.5",
+    "cornershop": "^0.5.0",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^5.7.0",
+    "jumanji": "^0.1.1",
+    "moment": "^2.12.0",
+    "mongoose": "^4.4.7",
+    "morgan": "~1.6.1",
+    "nodemailer": "^2.3.0",
+    "serve-favicon": "~2.3.0"
+  }
+}

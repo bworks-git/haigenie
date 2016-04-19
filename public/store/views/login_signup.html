@@ -1,0 +1,50 @@
+			<!-- Popup end -->	
+			<!-- Popup start Sign up -->
+				<div id="signup_popup" class="popup_sec">
+					<div class="popup_bg"></div>
+					<div class="popup_blk">
+						<div class="popup_outer">
+							<a href="javascript:;" title="close" class="popup_close"><i class="fa fa-times"></i></a>
+							<div class="popup_inner">
+								<div class="popup_top">
+									<div class="popup_title">User Registration</div>
+										<form ng-submit="register()">
+											<ul class="popup_frm">
+												<li class="input_line">
+													<input type="text" name="email" ng-model="email" placeholder="Email" />
+												</li>
+												<li class="input_line">
+													<input type="text" name="name" ng-model="name" placeholder="Fullname" />
+												</li>
+												<li class="input_line">
+													<input type="password" name="pwd" ng-model="password" placeholder="Password" />
+												</li>
+												<li class="input_line">
+													<input type="password" name="cpwd" ng-model="confirmPassword" placeholder="Confirm Password" />
+												</li>
+												<li class="input_line">
+													<input class="mandatory_chkbox" type="checkbox" ng-model="terms" name="email" /><span>By registering you confirm that you accept the Terms and Conditions and Privacy Policy</span>
+												</li>
+												<li class="input_line">
+													<input type="submit" class="btn2" href="" title="Signup Now!">Sign Up Now!</input>
+												</li>												
+											</ul>
+										</form>	
+									</div>									
+							</div>
+						</div>
+					</div>
+				</div>
+					<!-- Home Cart Slide  start -->
+								<script>											
+								  $('.button-collapse').sideNav({
+									  menuWidth: 600, // Default is 240
+									  edge: 'right', // Choose the horizontal origin
+									  closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+									}
+								  );   
+									 $(document).ready(function(){
+										// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+										$('.modal-trigger').leanModal();
+									  });
+								</script>-->

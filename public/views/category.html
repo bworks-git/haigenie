@@ -1,0 +1,66 @@
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">New Category</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<form ng-submit="addCategory()">
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="name" placeholder="Category Name"required />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<select class="form-control" ng-model="status" required>
+									<option value="active">Active</option>
+									<option value="inactive" selected>Inactive</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary" value="Submit" />
+							</div>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">All Categories List</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="search" placeholder="Search"></input>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<table class="table table-bordered">
+						<thead>
+							<th>Name</th>
+							<th>Status</th>
+							<th>Action</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, category) in categories | filter : search">
+								<td>{{ category.name }}</td>
+								<td>{{ category.status }}</td>
+								<td>
+									<button class="btn btn-warning" ng-click="changeStatus(category._id,category.name,category.status)">Change Status</button>
+									<button class="btn btn-danger" ng-click="deleteCategory(category._id)">Delete</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

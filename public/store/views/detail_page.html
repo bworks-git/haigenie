@@ -1,0 +1,225 @@
+ 
+	<script type="text/javascript" src="/store/script/jquery.simpleGallery.js"></script>
+	<script type="text/javascript" src="/store/script/jquery.simpleLens.js"></script>
+	<script type="text/javascript" src="/store/script/star-rating.js"></script>
+
+	
+	<section>
+	<div class="fwid">
+		<div class="clearfix brdcmb_out">			
+			<div class="center">
+				<ul class="user_breadcrumb">
+					<li><a title="Home" href="#">Home</a></li>
+					<li><p>Products</p></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="prd_det_pge">
+			<div class="center">
+				<div class="clearfix">
+					 <div class="simpleLens-gallery-container detpg_img_blk z-depth-1" id="demo-1">
+						<a title="Add To Wishlist" ng-click="updateWishlist(detail._id)" ng-class="(wish!=1)?'wshlst_icon z-depth-1':'wshlst_icon active z-depth-1'" href="javascript:;"><i class="material-icons">favorite_border</i></a>
+						<div class="simpleLens-container detop_img_blk">
+							<div class="simpleLens-big-image-container">
+								<a class="simpleLens-lens-image" data-lens-image="{{  detail.mainImage}}">
+									<img src="{{  detail.mainImage}}" class="simpleLens-big-image">
+								</a>
+							</div>
+						</div>
+
+						<div class="simpleLens-thumbnails-container">
+							<a  class="simpleLens-thumbnail-wrapper"
+							   data-lens-image="{{  detail.mainImage}}"
+							   data-big-image="{{  detail.mainImage}}" >
+								<img src="{{  detail.mainImage}}">
+							</a>
+							<a  class="simpleLens-thumbnail-wrapper"
+							   data-lens-image="{{  detail.thumbImage1}}"
+							   data-big-image="{{  detail.thumbImage1}}" ng-show="detail.thumbImage1.length>10">
+								<img src="{{  detail.thumbImage1}}">
+							</a>
+							<a  class="simpleLens-thumbnail-wrapper"
+							   data-lens-image="{{  detail.thumbImage2}}"
+							   data-big-image="{{  detail.thumbImage2}}" ng-show="detail.thumbImage1.length>10">
+								<img src="{{  detail.thumbImage2}}">
+							</a>
+							<a  class="simpleLens-thumbnail-wrapper"
+							   data-lens-image="{{  detail.thumbImage3}}"
+							   data-big-image="{{  detail.thumbImage3}}" ng-show="detail.thumbImage1.length>10">
+								<img src="{{  detail.thumbImage3}}">
+							</a>
+							
+
+							
+						</div>
+					</div>
+				
+					<script>
+						$(document).ready(function(){
+							$('#demo-1 .simpleLens-thumbnails-container img').simpleGallery({
+								loading_image: 'store/images/loading.gif'
+							});
+
+							$('#demo-1 .simpleLens-big-image').simpleLens({
+								loading_image: 'store/images/loading.gif'
+							});
+						});
+					</script>
+					
+					<div class="detpg_info_blk z-depth-1">
+						<div class="title2">{{ detail.title }}</div>
+						<!--div class="prodtlst_price_blk clearfix">
+							<p class="actl_price"><i class="fa fa-rupee"></i>199</p>
+							<p class="disc_price"><i class="fa fa-rupee"></i>125</p>
+							<p class="disc_offerdet">You Save <i class="fa fa-rupee"></i>74</p>
+						</div-->						
+						<div class="qtyamt_blk input-field usergm_slct_out clearfix">
+								<i class="material-icons dwnarrow">keyboard_arrow_down</i>
+								<select class="browser-default" ng-model="variant_select"   name="qtywght" ng-options="variant._id as variant.quantity+variant.unit+' - Rs. '+variant.price for variant in detail.variant" ></select>
+						</div>
+						 <div class="clearfix usrev_str_rat">
+							<span>User Rating :</span> 
+							
+							<input type="text" class="kv-gly-heart rating-loading" value="3.5" data-size="xl" title=""  disabled />							
+						</div>
+						<div class="cartbtn_blk">
+							<div class="dtp_qtyblk">
+								<div class="cartqty_blk"><span>Qty </span><input type="text" name="qtybox" ng-model="qty" ng-init="qty=1" maxlength="2" value="1" /></div>								
+							</div>
+							<a href="javascript:;" class="cartadd_btn" title="Add To Cart" ng-click="add2cart(detail._id,detail.title,qty,detail.mainImage,variant_select,detail.tax)">Add To Cart</a>
+							
+						</div>
+						
+					</div>
+					
+					<div class="detpg_calory_blk z-depth-1">					
+						
+					  <div class="clearfix">
+						<div class="col s12">
+						  <ul class="tabs">
+							<li class="tab col s3"><a class="active" href="#about_tab1">About</a></li>
+							<li class="tab col s3"><a href="#nutrition_tab2">Nutrition</a></li>
+						  </ul>
+						</div>
+						<div id="about_tab1" class="col s12">
+							<!--h5>About</h5--><br/>
+							<p class="desc1">{{ detail.description }} </p>
+							<h6>Points</h6>
+							<ul class="point_lst">
+								<li>{{ detail.point1 }}</li>
+								<li>{{ detail.point2 }}</li>
+								<li>{{ detail.point3 }}</li>
+								<li>{{ detail.point4 }}</li>
+								
+							</ul>
+						</div>
+						<div id="nutrition_tab2" class="col s12">
+						  <table class="table table-bordered nutrition_table highlight bordered responsive-table">
+							<thead>
+							  <tr>
+								  <th data-field="id">Priciple</th>
+								  <th data-field="name">Value</th>
+							  </tr>
+							</thead>
+
+							<tbody>
+							  <tr ng-repeat="(key,nutrifact) in nutrifacts">
+								<td>{{ nutrifact.nutrition }}</td>
+								<td>{{ nutrifact.value }}</td>
+							  </tr>
+							</tbody>
+							
+						  </table>
+						</div>
+					  </div>
+												
+					</div>
+					
+				</div>											
+			</div>
+			
+			<div class="clearfix">
+				<div class="review_blk_out">
+					<div class="center z-depth-1">
+						<div class="review_blk_pad">
+							<div class="review_blk">
+								<div class="title3">Reviews ({{reviews.length}})</div>
+								<form ng-show="loggedIn=='yes'" ng-submit="postReview()">
+									<ul>
+										<li class="input_line">
+											<textarea ng-model="new_review" rows="5" placeholder="Write a Review"></textarea>
+										</li> 
+										<li class="user_review usrev_str_rat">
+											<span>User Rating :</span> 
+											
+
+											 <input type="text" ng-model="new_rating" class="kv-gly-heart rating-loading" value="4.5" data-size="xl" title="" />
+										</li>									
+										<li class="input_line"><input type="submit" class="btn small" value="SUBMIT A REVIEW" /></li>
+									</ul>
+								</form>
+								<div class="rewd_sec">
+									<div class="rewd_blk" ng-repeat="(key,review) in reviews">
+										<div class="revwd_img">
+											<img class="prof_img" src="store/images/Users/profile_img.png" alt="{{review.userName}}" />
+										</div>
+										<div class="revwd_cmt">
+											<h6 class="title3">{{review.userName}}</h6>
+											<p class="desc2">{{review.review}}</p>
+											<p class="rewd_timeline">just now</p>
+											<div class="clearfix"><input type="text" class="kv-gly-heart rating-loading" value="{{review.rating}}" disabled /></div>
+										</div>
+									</div>
+
+									<!--a class="shw_more" title="Show more reviews...">Show more reviews...</a-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+	
+			
+		</div>
+		
+		
+		
+	</div>
+	</section>
+	
+
+	<script > 
+	function ready(){
+		$('ul.tabs').tabs();
+		 /* Initialize Rating */ $("#rating_id1").rating();
+
+		 $('.kv-gly-heart').rating({
+            containerClass: 'is-heart',
+            defaultCaption: '{rating} hearts',
+            starCaptions: function (rating) {
+                return rating == 1 ? 'One heart' : rating + ' hearts';
+            },
+           filledStar: '<i class="material-icons">favorite</i>',
+            emptyStar: '<i class="material-icons">favorite_border</i>' 
+            /* filledStar: '<i class="material-icons">star</i>',
+            emptyStar: '<i class="material-icons">star_border</i>' */
+        });
+		
+		/* Add Wishlist end */
+		
+		$("#incid").click(function(){
+			var inc = $("#qtyid").text(); inc++;
+			$("#qtyid").text(inc);			
+		})
+		$("#decid").click(function(){
+			var inc = $("#qtyid").text();
+				if( inc >= 2) { inc--; }
+			$("#qtyid").text(inc);			
+		})
+	}
+	
+    </script>
+

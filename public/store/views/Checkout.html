@@ -1,0 +1,118 @@
+
+	<!-- Checkout Address page Start -->
+	<div id="checkout_address_modalid" class="modal checkout_modal" ng-controller="OrderController">
+		<a class="modal_close" onclick="$('#checkout_address_modalid').closeModal();"><i class="material-icons small">power_settings_new</i></a>
+		<div class="clearfix checkout_modal_in">
+			<div class="col s12">
+				<div class="title1">Delivery Address </div><br/>
+								
+				<div id="delivery" class="col l12">
+					<div class="modal_delivery_in">
+						<form name="">
+							<div class="row">
+								<div class="input-field">
+								  <input id="nameid" type="text" ng-model="profile_name" class="validate">
+								  <label ng-if="name != '' " class="active ;" for="nameid">Name</label>
+								  <label ng-if="name == '' "  for="nameid">Name</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="doorid" type="text" ng-model="profile_doorNo" class="validate">
+								 <label ng-if="doorNo != '' " class="active ;" for="usernameid1">Block / Door No * </label>
+								 <label ng-if="doorNo == '' "  for="usernameid1">Block / Door No * </label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="street1" type="text" ng-model="profile_street1" class="validate">
+								  <label ng-if="street1 != '' " class="active ;" for="lastnameid1">Street 1 * </label>
+								  <label ng-if="street1 == '' "  for="lastnameid1">Street 1 * </label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="street2" type="text" ng-model="profile_street2" class="validate">
+								  <label ng-if="street2 != '' " class="active ;" for="mobilnoid1">Street 2 </label>
+								  <label ng-if="street2 == '' " for="mobilnoid1">Street 2 </label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="areaid" type="text" ng-model="profile_area" class="validate">
+								  <label ng-if="area != '' " class="active ;" for="mobilnoid2" class="center-align">Area *</label>
+								 <label ng-if="area == '' "  for="mobilnoid2" class="center-align">Area *</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="landmarkid" type="text" ng-model="profile_landmark" class="validate">
+								  	<label ng-if="landmark != '' " class="active ;" for="mobilnoid2" class="center-align">Landmark</label>
+									<label ng-if="landmark == '' "  for="mobilnoid2" class="center-align">Landmark</label>
+								  </div>
+								</div>
+							
+							<div class="row">
+								<div class="input-field">
+								  <input id="cntryid" type="text" ng-model="profile_country"class="validate">
+								  <label ng-if="country != '' " class="active ;" for="countryid" class="center-align">Country</label>
+								  <label ng-if="country == '' "  for="countryid" class="center-align">Country</label>
+								</div>
+							</div>	
+							<div class="row">
+								<div class="input-field">
+								  <input id="stateid" type="text" ng-model="profile_state" class="validate">
+								  <label ng-if="state != '' " class="active ;" for="stateid" class="center-align">State</label>
+								 <label ng-if="state == '' "  for="stateid" class="center-align">State</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="cityid" type="text" ng-model="profile_city" class="validate">
+								  <label ng-if="city != '' " class="active ;" for="cityid" class="center-align ">City</label>
+								  <label ng-if="city == '' "  for="cityid" class="center-align ">City</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="pincodeid" type="text" ng-model="profile_pincode" class="validate">
+								  <label ng-if="pincode != '' " class="active ;" for="pincodeid" class="center-align">Pin code *</label>
+								 <label ng-if="pincode == '' "  for="pincodeid" class="center-align">Pin code *</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="mobilenoid" type="text" ng-model="profile_mobile" class="validate">
+								  <label ng-if="mobile != '' " class="active ;" for="mobilnoid1">Mobile Number</label>
+								  <label ng-if="mobile == '' "  for="mobilnoid1">Mobile Number</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field">
+								  <input id="mailid" type="text" ng-model="profile_email" class="validate">
+								  <label ng-if="email != '' " class="active ;" for="emailid1">Email</label>
+								  <label ng-if="email == '' "  for="emailid1">Email</label>
+								</div>
+							</div>
+						</form>
+						<br/>
+						<div class="row">
+							<div class="col">
+								<a class="btn" ng-click="postOrder()">Continue To Payment</a>
+							</div><br/>
+						</div>
+					</div>
+				
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- Checkout Address page End-->
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.modal-trigger').leanModal();
+	});
+	</script>
+	

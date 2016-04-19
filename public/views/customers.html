@@ -1,0 +1,30 @@
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading"> All Customers List</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="search" placeholder="Search"></input>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<table class="table table-bordered">
+						<thead>
+							<th>S.no</th>
+							<th>Name</th>
+							<th>Email</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, customer) in customers | filter : search">
+								<td>{{ key+1 }}</td>
+								<td>{{ customer.name }}</td>
+								<td>{{ customer.email }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,161 @@
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">Edit Product</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<form ng-submit="editProduct()">
+						<!--first row start-->
+						<div class="col-md-12">
+							<label class="well well-sm col-md-12">Vital Info About  Product</label>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="name" placeholder="Product Name"  required />
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="brand" placeholder="Brand Name"required />
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="manufacturer" placeholder="Manufacturer Name"required />
+							</div>
+						</div>
+						
+						<!--first row end-->
+						<!--second row start-->
+
+						<div class="col-md-2">
+							<div class="form-group">
+								<input type="number" class="form-control" ng-model="tax" placeholder="Tax ( % )"required />
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<div class="form-group">
+								 <textarea class="form-control" placeholder="Description" rows="3" ng-model="description" ></textarea>
+							</div>
+						</div>
+						<!--second row end-->
+						<!--third row start-->
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="well well-sm col-md-12">Points About Product</label>
+								<input class="form-control" ng-model="point1" placeholder="point1" />
+								<input class="form-control" ng-model="point2" placeholder="point2"/>
+								<input class="form-control" ng-model="point3" placeholder="point3"/>
+								<input class="form-control" ng-model="point4" placeholder="point4"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="well well-sm col-md-12">Images url of Product</label>
+								<input type="url" class="form-control" ng-model="mainImage" placeholder="MainImage" required/>
+								<input type="url" class="form-control" ng-model="thumbImage1" placeholder="ThumbImage1" />
+								<input type="url" class="form-control" ng-model="thumbImage2" placeholder="ThumbImage2" />
+								<input type="url" class="form-control" ng-model="thumbImage3" placeholder="ThumbImage3"/>
+							</div>
+						</div>
+						<!--third row end-->
+						<div class="col-md-12">
+							<label class="well well-sm col-md-12">Other Info About  Product</label>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<select class="form-control" ng-model="category" ng-options="category.name as category.name for category in categories" required>
+									
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+							<div class="form-group">
+								<select class="form-control" ng-model="material_feature" placeholder="material_feature"required >
+									<option value="veg">Veg</option>
+									<option value="non-veg">Non-Veg</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<select class="form-control" ng-model="saleType" required>
+									<option selected disabled>Choose Sale Type</option>
+									<option value="none">None</option>
+									<option value="new" >New</option>
+									<option value="featured" >Featured</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<select class="form-control" ng-model="status" required>
+									<option selected disabled>Choose Status</option>
+									<option value="active">Active</option>
+									<option value="inactive" >Inactive</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12 divider"><hr/></div>
+						<div class="col-md-4 right" >
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary btn-block" value="Submit" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-4">
+				<a href="#/product_variant/{{ product_id }}" class="btn btn-primary btn-block">Add Variant</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">Variants</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-bordered">
+						<thead>
+							<th>S.No</th>
+							<th>SKU</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Unit</th>
+							<th>Stock</th>
+							<th>Status</th>
+							<th>Action</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, variant) in variants">
+								<td>{{ key + 1 }}</td>
+								<td>{{ variant.sku }}</td>
+								<td>{{ variant.price }}</td>
+								<td>{{ variant.quantity }}</td>
+								<td>{{ variant.unit }}</td>
+								<td>{{ variant.stock }}</td>
+								<td>{{ variant.status }}</td>
+								<td>
+									<a href="#/variant_edit/{{ product_id }}/{{ variant._id }}" class="btn  btn-success btn-block" >Edit</a>
+									<button class="btn btn-danger btn-block" ng-click="deleteVariant(variant._id)">Delete</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

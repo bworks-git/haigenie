@@ -1,0 +1,63 @@
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">Add Nutrition</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<form ng-submit="addNutrition()">
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="nutrition" placeholder="Nutrition"required />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="value" placeholder="Value"required />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary" value="Submit" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">NutriFacts of the Product </div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="search" placeholder="Search"></input>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<table class="table table-bordered">
+						<thead>
+							<th>S.No</th>
+							<th>Nutrition</th>
+							<th>Value</th>
+							<th>Action</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, nutrifact) in nutrifacts | filter : search">
+								<td>{{ key +1 }}</td>
+								<td>{{ nutrifact.nutrition }}</td>
+								<td>{{ nutrifact.value}}</td>
+								<td>
+									<button class="btn btn-danger" ng-click="deleteNutrifact(nutrifact._id)">Delete</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

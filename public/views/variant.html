@@ -1,0 +1,56 @@
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">Variants</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<form ng-submit="addVariant()">
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="sku" placeholder="Sku"required />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="number" class="form-control" ng-model="price" placeholder="Product Price"required />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="number" class="form-control" ng-model="quantity" placeholder="Quantity"required />
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="form-group">
+								<select class="form-control" ng-model="unit" placeholder="Unit"required >
+									<option value="ml">ml</option>
+									<option value="litre">litre</option>
+									<option value="gram">gram</option>
+									<option value="kg">kg</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="number" class="form-control" ng-model="stock" placeholder="Stock"required />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<select class="form-control" ng-model="status" required>
+									<option selected disabled>Choose Status</option>
+									<option value="active">Active</option>
+									<option value="inactive" >Inactive</option>
+								</select>
+							</div>
+						</div><br/>
+						<div class="col-md-4">
+							<input type="submit" class="btn btn-primary btn-block" value="Submit"></input>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,103 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Order :{{ order._id }}</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									Order Info
+								</div>
+								<div class="panel-body">
+									<div>Order Id - {{ order._id }}</div>
+									<div>Order Place Date - {{ order.order_date }}</div>
+									<div>Order Delivery Date - {{ order.delivery_date }}</div>
+									<div>Payment Method - {{ order.payment }}</div>
+									<div>Total Order Amount - {{ order.total }}</div>
+									<div>Total Products - {{ order.products.length }}</div>
+									<div>Customer Name - {{ order.userName }}</div>
+									
+									<div>Email - {{ order.email }}</div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									Address Info
+								</div>
+								<div class="panel-body">
+									<div>{{ order.userName  }}</div>
+									<div>{{ order.doorNo  }}</div>
+									<div>{{ order.Street1  }}</div>
+									<div>{{ order.Street2 }}</div>
+									<div>{{ order.area  }}</div>
+									<div>{{ order.city  }}</div>
+									<div>{{ order.State  }}</div>
+									<div>India-{{ order.pincode }} .</div>
+									<div> LandMark :{{ order.landmark }},</div>
+									<div>Phone - {{ order.mobile }}</div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="row">
+						<div class="col-md-12 ">
+							<table class="panel panel-default panel-body table table-bordered">
+								<thead>
+									<th>S.No</th>
+									<th>Image</th>
+									<th>Product Name</th>
+
+									<th>Product Quantity</th>
+									<th>Order Quantity</th>
+									<th>Price</th>
+									<th>Tax</th>
+									<th>Subtotal</th>
+									
+								</thead>
+								<tbody>
+									<tr ng-repeat="(key, item) in order.products">
+										<td>{{ key+1 }}</td>
+										<td><img src="{{ item.img }}" height="100px" width="60px" alt="Product Image" /></td>
+										<td>{{ item.product_name }}</td>
+										<td>{{ item.weight +item.unit}}</td>
+										<td>{{ item.quantity }}</td>
+										<td>{{ item.price }}</td>
+										<td>{{ item.tax }}%</td>
+										<td>{{ item.subtotal }}</td>
+										
+									</tr>
+									<tr>
+										<td colspan="5"></td>
+										<td>
+											Total </td>
+										<td colspan="2"> {{ order.total-order.shippingCharge  }}?Z
+										</td>
+									</tr>
+									<tr>
+										<td colspan="5"></td>
+										<td>
+											Shipping Charge </td>
+										<td colspan="2"> {{ order.shippingCharge }}
+										</td>
+									</tr>
+									<tr>
+										<td colspan="5"></td>
+										<td>Grand Total </td>
+										<td colspan="2">{{ order.total }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

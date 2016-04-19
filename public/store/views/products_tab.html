@@ -1,0 +1,98 @@
+<!-- Product Tabs Start -->
+		<!--div class="row bord_bottombg_out">
+			<div class="bord_bottombg">
+				<div class="center">
+					<!-- Product Tabs Navigation ->
+					<div class="col l12 hmoe_prod_tab">
+						<div class="hmoe_prod_tabin">
+						  <ul class="tabs text-center" id="home_prod_tabid" >
+						  <!--li  id="first_tab" ng-click="loadData(categories[0].name)" class="tab col s3 l1"><a class="active" >{{ categories[0].name }}</a></li->
+						
+							<li  ng-repeat="(key, category) in categories" id="oils_id"  ng-click="loadData(category.name)" ng-if="key!=-1" class="tab col s3 l2"><a active="category.active">{{ category.name }}</a></li>
+						
+						  </ul>					  
+						</div>
+					  <a class="btnPrevious" href="javascript:;" title="Previous"><i class="material-icons">chevron_left</i></a>
+					  <a class="btnNext" href="javascript:;" title="Next"><i class="material-icons">chevron_right</i></a>
+					  
+					</div>
+					<!-- Tab Products ->
+				</div>
+			</div>
+		</div -->
+			
+			<div class="row prod_imgdesc_row">
+			<div class="clearfix">
+				<div id="oils_id" class="col l12">
+					
+						<!--<div class="col l12 prod_imgdesc z-depth-1">
+							<div class="col s12 l6">
+								<img class="responsive-img" src="store/images/oil_image.jpg" alt=""/>
+							</div>	
+							<div class="col s12 l6">
+								<h5 class="text-left">Oils</h5>
+								<p class="desc1 grey-text text-darken-1">T.M.M.R.Rathinasamy & Co is in the field of extraction of edible oils since 1977. Main intention of our company is to produce best quality Gingelly oil through natural process.</p>
+								<br/>
+								<p class="desc1 grey-text text-darken-1">Nearly 400 tons of quality Gingelly oil can be extracted every month from our factory. Best quality sesame seeds from all over India are subjected to quality testing and then purchased. Since Gingelly oil extraction process we follow is natural, the Aroma of our Gingelly oil itself speaks for its flavour and quality.</p>
+							</div>	
+						</div>	-->
+					<div class="center">
+					<h4 class="title1">{{ title }}</h4>
+					<div class="prodct_list row">
+						<div class="col m12 l12">
+							
+							<div class="prd_box z-depth-1" ng-repeat="(key, product) in products|filter:search">
+								<div class="prd_boxin">
+									<div ng-class="{new:'prodtlst_img new_icon', featured:'prodtlst_img sale_icon'}[product.saleType]" >
+									
+										<a title="" href="javascript:;"><img alt="Product" src="{{ product.mainImage }}" class="Product"></a>
+										<a class="prod_wishlst" ng-click="updateWishlist(product._id)" ng-show="loggedIn=='yes'" href="javascript:;" title="wishlist"><i class="material-icons">favorite_border</i></a>
+									</div>
+									<form>
+										<div class="prodtlst_info clearfix">
+											<div class="prodtlst_info_top">
+												<div><a title="{{ product.title }}" href="#/product/{{ product._id }}" class="title2">{{ product.title }} - {{ product.variant[0].quantity+product.variant[0].unit }}</a></div>																																			
+											</div>
+											<div class="prodtlst_price_blk clearfix">
+												<p class="prd_price"><i class="fa fa-rupee"></i>{{ product.variant[0].price }}</p>
+											</div>
+											
+											<div class="input-field qtyamt_blk usergm_slct_out clearfix">  
+												<i class="material-icons dwnarrow">keyboard_arrow_down</i>
+												<select class="browser-default" ng-model="variant_select" ng-init="variant_select=product.variant[0]._id" name="qtywght" ng-options="variant._id as variant.quantity+variant.unit+' - Rs. '+variant.price for variant in filters(product.variant)">
+													
+												</select>
+												<!-- label>Select Qty Weight</label-->
+											 </div>
+											
+											<div class="cartbtn_blk row clearfix">							
+
+												<div class="input-field col l6">
+												  <div class="cartqty_blk"><span>Qty </span><input type="text" name="qtybox" ng-model="qty"maxlength="2" ng-init="qty=1" /></div>
+												</div>
+												<div class="input-field col l6"><a href="javascript:;"class="cartadd_btn" ng-click="add2cart(product._id,product.title,qty,product.mainImage,variant_select,product.tax)" title="Add To Cart">Add to cart</a> </div>
+												
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							
+							
+							
+							
+							
+							</div>
+						</div>
+						
+					</div>
+						
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		

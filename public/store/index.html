@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html ng-app="haigenieFront">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Haigenie Online Organic Products Ecommerce">
+    <meta name="keywords" content="Online Organic Foods Coimbatore Tamilnadu, India">        
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>Haigenie Organic Food</title>
+	<link rel="icon" type="image/png" href="store/images/favicon.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" />
+	 <link rel="stylesheet" type="text/css" href="/store/css/star-rating.css">
+	<link rel="stylesheet" type="text/css" href="store/css/style.css" />
+	<link rel="stylesheet" href="/store/css/materialize.min.css">
+	<link rel="stylesheet" href="/store/css/bootstrap-datepicker3.min.css">
+
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>	
+<div id="loading">
+	<p>“When health is absent, wisdom cannot reveal itself, art cannot manifest, strength cannot fight, wealth becomes useless, and intelligence cannot be applied.” 
+― Herophilus</p>
+  <img id="loading-image" src="loader.gif" alt="Loading..." />
+  
+</div>
+	<header ng-controller="HeaderController">		
+		<div class="head_out navbar-fixed">		
+			<div class="fixed_nav">
+				<div class="htop navbar">
+					<div class="center">
+						<div class="clearfix text-center">
+							<div class="htoplft">
+								<a href="#/" class="logo1"><img style="z-index: 100000;" src="store/images/logo_icon.png" alt="haigenie" /></a>
+							</div>
+							<div class="htoplft">
+								<a href="#/" class="logo" title="haigenie"><img style="z-index: 100000;" src="store/images/logo.png" alt="haigenie" /></a>
+							</div>
+							
+							<div class="htop_cntr">
+								<div class="search_blk">
+									<!--<div class="search_select_blk">
+										<select>
+										  <option value="" disabled selected>All Category</option>
+										  <option value="1">Oils</option>
+										  <option value="2">Cerrals</option>
+										  <option value="3">Powder</option>
+										</select>
+										<i class="material-icons">keyboard_arrow_down</i>
+									</div>-->
+									<input type="text" id="search_input" ng-click="search()" placeholder="Organic Search" ng-model="$root.search" name="search">
+									<a name="serch_btn" ng-click="hello()" class="waves-effect waves-light btn"><i class="material-icons small">search</i></a>
+								</div>
+								
+							</div>
+							
+							<div class="htoprht">
+								<ul class="newuser_icnlst">
+									<li ng-show="location.path()=='/'">
+                                        <a class="dropdown-button catg_dropdown"  data-activates="catgdrpdwn_id"> Categories</a>
+                                        <ul id="catgdrpdwn_id" class="dropdown-content" >
+                                            <li ng-click="filterCategory('all')"><a class="">All Categories</a></li>
+                                            <li  ng-repeat="(key, category) in categories"  ng-click="filterCategory(category.name)"><a class="">{{ category.name }}</a></li>
+                                        </ul>                                        
+                                    </li>
+									<li >
+										<a class="dropdown-button"  data-activates="userdrpdwn_id" title="User">
+											<i class="material-icons">account_circle</i><span class="material-icons">keyboard_arrow_down</span></a>
+										<ul id="userdrpdwn_id" class="dropdown-content" >
+											<li ng-show="loggedIn =='no'"><a class="modal-trigger" href="#login-page">Login</a></li>
+											
+											<li ng-if="loggedIn !='no'"><a href="#/user_profile" data-activates="myprofileid" class="button-collapse" title="My Profile">My Profile</a></li>					
+
+											<li ng-show="loggedIn !='no'"><a href="javascript:;" data-activates="myorder-id" class="button-collapse" title="My Order">My Order</a></li>										
+																				
+											<li ng-show="loggedIn !='no'"><a ng-click="logout()">Logout</a></li>
+										 </ul>
+									</li>								
+									<li ng-show="loggedIn !='no'"><a href="javascript:;" data-activates="wishlistid" title="WishList" class="button-collapse hwishlst"><i class="material-icons">favorite_border</i></a></li>
+									
+									<li><a href="javascript:;" data-activates="slide-out-cartid" title="Cart" class="cart button-collapse"><i class="material-icons">add_shopping_cart</i><span class="badge">{{ cart_count }}</span></a></li>
+								</ul>
+								<!-- Myorder products start -->
+								<div id="myorder-id" class="side-nav" ng-controller="MyorderController">
+									
+									<div class="myorder_sec">
+									<a class="side_nav_close" onclick="$('#myorderid').sideNav('hide');"><i class="material-icons">highlight_off</i></a>
+									<div class="title1">My Orders</div>
+										<table class="cart_tbl">
+											<tr class="carttbl_head">
+												<th width="80">Order Id</th>											
+												<th width="20"></th>
+												<th width="150">Order Date</th>
+												<th width="20"></th>
+												<th width="100">Total Products</th>
+												<th width="20"></th>
+												<th width="100">Amount</th>
+												<th width="20"></th>
+												<th width="130">Delivery Date</th>
+												<th width="30"></th>
+												<th width="120">Status</th>
+											</tr>
+											<tr ng-repeat="(key, myorder) in myorder">											
+												<td>
+													{{ myorder._id }}
+												</td>
+												<td></td>
+												<td>{{ myorder.order_date }}</td>
+												<td></td>
+												<td> {{ myorder.products.length }} </td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>{{ myorder.total }}</td>
+												<td></td>
+												<td>{{ myorder.delivery_date }}</td>
+												<td></td>
+												<td>{{ myorder.status }}</td>
+												
+											</tr>
+											<!--tr>											
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="store/images/Products/rev_product.png" class="Product"></a>
+												</td>
+												<td></td>
+												<td>Ord2</td>
+												<td></td>
+												<td> Carrot </td>
+												<td></td>
+												<td>500 gram</td>
+												<td></td>
+												<td>2</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>150</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>300</td>
+												<td></td>
+												<td><span class="ord_pending">Pending</span></td>
+											</tr>
+											<tr>											
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="store/images/Products/rev_product.png" class="Product"></a>
+												</td>
+												<td></td>
+												<td>Ord3</td>
+												<td></td>
+												<td> Carrot </td>
+												<td></td>
+												<td>500 gram</td>
+												<td></td>
+												<td>2</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>150</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>300</td>
+												<td></td>
+												<td><span class="ord_cancel">Cancelled.</span></td>
+											</tr>-->
+										</table>
+									</div>
+									
+								</div>
+								<!-- Myorder products end -->
+								<!-- Cart products start -->
+								<div id="slide-out-cartid" class="side-nav">
+									<div class="myorder_sec">
+										<a class="side_nav_close" onclick="$('#slide-out-cartid').sideNav('hide');"><i class="material-icons">highlight_off</i></a>
+										<div class="title1">My Cart</div>
+										<table class="cart_tbl">
+											<tr class="carttbl_head">
+												<th width="80">Image</th>
+												<th width="5"></th>
+												<th width="180">Order Items</th>
+												<th width="5"></th>
+												<th width="80">Quantity</th>
+												<th width="5"></th>
+												<th width="150">No of Item</th>														
+												<th width="5"></th>
+												<th width="90">Total Prize </th>
+												<th width="20"></th>
+												<th width="70">Delete</th>
+											</tr>
+											<tr ng-repeat="(key, item) in cart_items">
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="{{ item.img }}" class="Product"></a>
+												</td>
+												<td></td>
+												<td>{{ item.product_name }}</td>
+												<td></td>
+												<td>{{ item.weight }} {{item.unit  }}</td>
+												<td></td>
+												<td>
+													<a ng-click="decrementItem(item.variant_id,item.tax,item.price)"href="javascript:;" class="adedprod_cnt"><i class="material-icons">remove_circle</i></a>
+													<p class="adedprod_quan"><span id="">{{ item.quantity }}</span></p>
+													<a ng-click="incrementItem(item.variant_id,item.tax,item.price)"href="javascript:;" class="adedprod_cnt"><i class="material-icons">add_circle</i></a>
+												</td>													
+												<td></td>
+												<td><i class="fa fa-rupee"></i>{{ item.subtotal }}</td>
+												<td></td>
+												<td><a ng-click="removeItem(key)" class="adedprod_rmve"><i class="material-icons">clear</i></a></td>
+											</tr>
+
+											<tr class="trbg" ng-hide="cart_count==0">
+												<td colspan="6"><div class="ordr_lftblk">sub total</div>  </td>
+												<td colspan="5"><div class="ordr_rhtblk"><i class="fa fa-rupee"></i>{{ subtotal }}</div></td>
+											</tr>
+											
+											<tr class="trbg" ng-hide="cart_count==0">
+												<td colspan="6"><div class="ordr_lftblk">Shipping Charge</div>  </td>
+												<td colspan="5"><div class="ordr_rhtblk"><i class="fa fa-rupee"></i>{{ shipping }}</div></td>
+											</tr>
+											<tr class="ord_total" ng-hide="cart_count==0">
+												<td colspan="6"><div class="ordr_lftblk">Grand Total</div>  </td>
+												<td colspan="5"><div class="ordr_rhtblk"><i class="fa fa-rupee"></i>{{ grand_total }}</div></td>
+											</tr>
+											<tr class="no_iyem" ng-show="cart_count==0">
+
+												<td style="margin-top: 20%;"colspan="12">No item in your cart. Please add something and comeback..!</td>
+											</tr>
+											
+										</table>
+										<br/>
+										<div class="row" ng-hide="cart_count==0"><div class="col push-l4 l4"><a ng-show="loggedIn !='no'"class="btn text-white modal-trigger"  href="#checkout_address_modalid">Complete Order</a><a ng-show="loggedIn =='no'"class="btn text-white modal-trigger"  href="#login-page" onclick="$('#slide-out-cartid').sideNav('hide');">Login to Complete Order</a></div></div>
+									</div>
+								</div>
+								<!-- Cart products End -->
+								
+								
+								
+								<!-- WishList products start -->
+								<div id="wishlistid" class="side-nav" ng-controller="MyorderController">
+									<div class="wishlist_sec">
+									<a class="side_nav_close" onclick="$('#wishlistid').sideNav('hide');"><i class="material-icons">highlight_off</i></a>
+									<div class="title1">Wishlist</div>
+										<table class="cart_tbl">
+											<tr class="carttbl_head">
+												<th width="80">Image</th>
+												<th width="20"></th>
+												<th width="200">Order Name</th>
+												<th width="20"></th>
+												<th width="150">Quantity</th>
+												<th width="20"></th>
+												
+												<th width="180">Category</th>
+												<th width="20"></th>
+												<th width="70">Delete</th>
+											</tr>
+											<tr ng-repeat="(key, wishlist) in mywishlist" >
+												
+												<td> 
+													<a title="" href="javascript:;"><img alt="Food" src="{{ wishlist.product[0].mainImage }}" class="Product"></a>
+												
+										
+												</td>
+												<td></td>
+												<td> {{  wishlist.product[0].title }} </td>
+												<td></td>
+												<td> 
+													<select class="browser-default" ng-model="variant_select" ng-init="variant_select=wishlist.product[0].variant[0]._id" name="qtywght" ng-options="variant._id as variant.quantity+variant.unit+' - Rs. '+variant.price for variant in wishlist.product[0].variant">
+													
+													</select>
+												</td>
+												<td></td>
+												
+												<td>{{ wishlist.product[0].category }}</td>
+												<td></td>
+												<td><a ng-click="updateWishlist(wishlist.product[0]._id)" class="adedprod_rmve"><i class="material-icons">clear</i></a></td>
+											</tr>
+											
+										</table>
+									</div>
+									
+								</div>
+								<!-- WishList products end -->								
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div> <!--  Fixed nav end -->
+		</div>
+	</header>
+	
+
+	<!-- Login start -->
+	<div id="login-page" class="modal login_modal" ng-controller="AuthController" ng-model="login_frm">
+		<a class="modal_close" onclick="$('#login-page').closeModal();"><i class="material-icons small">power_settings_new</i></a>
+		<div class="col s12 z-depth-4" id="login_blkid">
+		  <form id="loginform_id" class="login-form" ng-submit="doLogin();" >
+			<h4 class="text-center">Login</h4>
+			<div class="row margin">
+			  <div class="input-field col s12">
+				
+				<input id="username" ng-model="email" type="text">
+				<label for="username" class="center-align">Email</label>
+			  </div>
+			</div>
+			<div class="row margin">
+			  <div class="input-field col s12">
+				
+				<input id="password" ng-model="password" type="password">
+				<label for="password">Password</label>
+			  </div>
+			</div>
+			<div class="row margin">          
+			  <div class="input-field col s12 m12 l12  login-text">
+				  <input type="checkbox" id="remember-me" />
+				  <label for="remember-me">Remember me</label>
+			  </div>
+			</div>
+			 
+			<div class="row">
+			  <div class="input-field col s12">
+				<!-- input type="submit" class="btn waves-effect waves-light col s12" value="Login"></input -->
+				<!--a onclick="$('#loginform_id').submit();$('#login-page').closeModal();" class="btn waves-effect waves-light col s12" >Login</a -->
+				<input type="submit"  class="btn waves-effect waves-light col s12" value="Login" />
+			  </div>
+			</div>
+			
+			<div class="row margin">
+				<div class="col s12 m12 l12"><p><a href="javascript:;" onclick="$('#login_blkid').hide();$('#forgetpwd_blkid').show();">Forgot password ?</a> </p></div>
+			</div>
+			
+			<div class="row">
+			  <div class="input-field col s12 m12 l12">
+				<p class="medium-small">Do not have an account? <a href="javascript:;" onclick="$('#login_blkid').hide();$('#signup_blkid').show();">Register Now!</a></p>
+			  </div>    
+			</div>
+
+		  </form>
+		</div>
+		
+		<!-- Sign Up start -->
+		<div class="col s12 z-depth-4" style="display:none;" id="signup_blkid">
+		  <form class="login-form" ng-submit="register()">
+			<h4 class="text-center">Sign Up</h4>
+			<div class="row margin">
+			  <div class="input-field col s12">			
+				<input id="firstname" type="text" ng-model="name">
+				<label for="firstname" class="center-align">Full Name</label>
+			  </div>
+			</div>
+			
+			<div class="row margin">
+			  <div class="input-field col s12">
+				
+				<input id="email" type="text" ng-model="email">
+				<label for="email" class="center-align">Mail Id</label>
+			  </div>
+			</div>
+			<div class="row margin">
+			  <div class="input-field col s12">
+				
+				<input id="password" type="password" ng-model="password">
+				<label for="password">Password</label>
+			  </div>
+			</div>
+			<div class="row margin">
+			  <div class="input-field col s12">
+				
+				<input id="cnfpassword" type="password" ng-model="confirmPassword">
+				<label for="cnfpassword">Confirm Password</label>
+			  </div>
+			</div>
+			 
+			<div class="row">
+			  <div class="input-field col s12">
+				<input type="submit" class="btn waves-effect waves-light col s12" value="Register" />
+			  </div>
+			</div>
+						
+			<div class="row">
+			  <div class="input-field col s12 m12 l12">
+				<p class="medium-small">Already have an account? <a href="javascript:;" onclick="$('#signup_blkid').hide();$('#login_blkid').show();">Sign In!</a></p>
+			  </div>    
+			</div>
+		  </form>
+		</div>
+		
+		<!-- Sign Up end -->
+		
+		<!-- Forget password start -->
+		
+		<div class="col s12 z-depth-4 "  style="display:none;" id="forgetpwd_blkid">
+		  <form name="forgetform" class="login-form" ng-submit="forgetPassword()">
+			<h4 class="text-center">Forget Password?</h4>
+			<div class="row margin">
+			  <div class="input-field col s12">
+			
+				<input name="forgetemail" id="email" type="text" ng-model="forgetemail">
+				<label for="email" class="center-align">Mail Id</label>
+				<span ng-show="forgetform.forgetemail.$error"> Mail Id Required</span>
+			  </div>
+			</div>
+			 
+			<div class="row">
+			  <div class="input-field col s12">
+				<input type="submit"   class="btn waves-effect waves-light col s12" value="Send Password" />
+			  </div>
+			</div>
+			
+			<div class="row margin">
+				<div class="col s12 m12 l12"><p><a href="javascript:;" onclick="$('#forgetpwd_blkid').hide();$('#login_blkid').show();">Sign In</a> </p></div>
+			</div>
+			
+		  </form>
+		</div>
+		
+		<!-- Forget password end -->
+		
+    </div>
+	
+	<!-- Login end -->
+	
+	<ng-include src="'store/views/Checkout.html'" scope="" onload=""></ng-include>
+	
+	
+	<section>
+	<div class="fwid">
+		<ng-include src="'store/views/banner.html'" ng-if="location.path()=='/'"></ng-include>
+		<div class="view">
+			<ng-view></ng-view>
+		</div>
+		
+		
+		
+		<div class="whychose_sec">
+			<div class="center">
+				<h3 class="title1">Why Choose Us ?</h3>
+				<ul class="lst_blk whychose_lst">
+					<li>
+						<div class="flip_frnt z-depth-1"><i class="why_icon1"></i></div>
+						<div class="flip_back z-depth-1"><p class="desc1">100% Certified Organic Products</p></div>
+					</li>
+					<li>
+						<div class="flip_frnt z-depth-1"><i class="why_icon2"></i></div>
+						<div class="flip_back z-depth-1"><p class="desc1">Quality You Love To Cook</p></div>
+					</li>
+					<li>
+						<div class="flip_frnt z-depth-1"><i class="why_icon3"></i></div>
+						<div class="flip_back z-depth-1"><p class="desc1">Guaranteed Value For U'r Money</p></div>
+					</li>
+					<li>
+						<div class="flip_frnt z-depth-1"><i class="why_icon4"></i></div>
+						<div class="flip_back z-depth-1"><p class="desc1">Quick Delivery to U'r Door step</p></div>
+					</li>					
+				</ul>
+			</div>
+		</div>
+		
+		
+	</div>
+	</section>
+	<div id="logo-animation">
+		<div class="logoanim_blk"><div class="logoanim" style="left:30%;"></div></div>
+	</div>
+	<footer>
+		<div class="ftop">
+			<div class="ftop_in">
+				<div class="center">
+					<div class="fbox">
+						<h5 class="title1">Company</h5>
+						<ul class="fbox_lst">
+							<li><a href="javascript:;" title="">About Us</a></li>
+							<li><a href="javascript:;" title="">Terms & Conditions</a></li>
+							<li><a href="javascript:;" title="">Privacy Policy</a></li>
+							<li><a href="javascript:;" title="">Contact Us</a></li>
+						</ul>
+					</div>
+					<div class="fbox">
+						<h5 class="title1">Profile</h5>
+						<ul class="fbox_lst">
+							<li><a href="javascript:;" title="">My Account</a></li>
+							<li><a href="javascript:;" title="">Wishlist</a></li>
+							<li><a href="javascript:;" title="">Order History</a></li>
+						</ul>
+					</div>
+					<div class="fbox">
+						<h5 class="title1">Contact Us</h5>
+						<ul class="fbox_lst">
+							<li><a href="javascript:;" title=""><i class="fa fa-envelope-o"></i> care@haigenie.com</a></li>
+							<li><a href="javascript:;" title="" class="num_font"><i class="fa fa-mobile"></i> +91 9943 9943 22</a></li>
+							<li>Coimbatore</li>
+						</ul>
+					</div>
+					<div class="fbox">
+						<h5 class="title1">Follow Us</h5>
+						<ul class="fbox_lst">
+							<li><a href="javascript:;" title=""><i class="fa fa-facebook-square"></i> Facebook</a></li>
+							<li><a href="javascript:;" title=""><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="fbtm">
+				<div class="center">
+					<p class="cpyrht">Copyright &copy; 2015 Haigeniec. All rights reserved.</p>
+					<p class="dsgnby">Design by <a href="http://bworks.in/" title="Bworks">Bworks Tech Labs</a></p>
+				</div>
+			</div>
+			
+		</div>
+	</footer>
+	
+	<!-- Popup start Login -->
+				
+			
+			<!-- Popup end -->	
+			<!-- Popup start Sign up -->
+			
+			<!-- <script>$.noConflict();</script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+			
+			<!-- Popup end -->	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+		<script src="/store/script/bootstrap-datepicker.min.js"></script>
+		<script src="/libs/js/angular.min.js"></script>
+		<script src="/libs/js/angular-route.min.js"></script>
+		<script src="/libs/js/angular-local-storage.min.js"></script>			
+		<script type="text/javascript" src="store/app.js"></script>
+		<script type="text/javascript" src="store/routes.js"></script>
+		<script type="text/javascript" src="/store/controllers/AuthController.js"></script>
+		<script type="text/javascript" src="/store/controllers/HomeController.js"></script>
+		<script type="text/javascript" src="/store/controllers/HeaderController.js"></script>
+		<script type="text/javascript" src="/store/controllers/OrderController.js" ></script>
+		<script type="text/javascript" src="/store/controllers/UserProfileController.js" ></script>
+		<script type="text/javascript" src="/store/controllers/MyorderController.js" ></script>
+		<script type="text/javascript" src="/store/controllers/ProductController.js" ></script>
+		<script type="text/javascript" src="store/services/AuthService.js"></script>
+		<script type="text/javascript" src="store/services/CartService.js"></script>		
+			
+	<script language="javascript" type="text/javascript">				
+			function closeLogin(){
+				$('#login-page').closeModal();
+			}
+			function closeCheckout(){
+				$('#checkout_address_modalid').closeModal();
+			}
+		     	$(window).load(function() {
+		     		$('#loading').hide();
+		  		});							
+			  $('.button-collapse').sideNav({
+				  menuWidth: 905, // Default is 240
+				  edge: 'right', // Choose the horizontal origin
+				  closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
+				}
+			  );   
+				 $(document).ready(function(){	
+					 $('.dropdown-button').dropdown();
+					//$(document).on('click', '.button-collapse', function sideNav(){} );					 
+				  });
+	</script>
+	<script defer>
+		     	
+		     	function scroll2product() {
+					    $('html,body').animate({
+					        scrollTop: $(".view").offset().top - 60}, 'slow');
+				};
+				function scroll2top() {
+					    $('html,body').animate({
+					        scrollTop: $(".fwid").offset().top - 100}, 0);
+				};
+				/* Add Wishlist end */
+				// $('.prod_wishlst').on( "click",function () { alert('wishlist clicked'); 
+				$(document).on('click', '.prod_wishlst', function(){ 
+					//console.log('wishlist clicked');  alert('wishlist clicked'); 
+					$(this).toggleClass('active');					
+				}) ;	
+				/* Add Wishlist end */
+				/* Window scroll & Image move */
+				$(window).scroll(function() {
+					if ( $('.logoanim_blk').length ) {
+						$(".logoanim_blk").find('.logoanim').each(function(i, el) {
+							var logoanim = $(this),
+								$w = $(window),
+								windowTop = $w.scrollTop(),	
+								windowBottom = windowTop + $w.height(),
+								logoanimTop = logoanim.offset().top,
+								logoanimBottom = logoanimTop + logoanim.height(),
+								logoanimStart = windowBottom - logoanimTop,
+								logoanimStop = windowBottom - logoanimBottom;
+
+							if ( logoanimStart > 0 < logoanimStop ) {
+								logoanim.css({
+									'left': Math.floor((logoanimStart / $w.height()) * 100) + '%'
+								});
+							}
+						});
+					}
+				});
+				/* Window scroll & Image move */
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+
+@keyframes slideOutLeft {
+    to      { transform: translateX(-100%); }
+}
+/* scale up */
+@keyframes scaleUp {
+    from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateX(100%); }
+    to      { transform: translateX(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from    { transform:translateY(100%); }
+    to      { transform: translateY(0); }
+}
+
+
+body{
+	background-color: #F1F1F1;
+	margin-top: 75px;
+	
+}
+.navbar{
+	
+}
+.chart{
+	height :400px !important;
+}
+
+.navbar-default .navbar-brand{
+	background-color: #1E183F;
+	color: #FFFFFF;
+}
+.navbar-default .navbar-brand hover{
+	background-color: #1E183F;
+	color: #FFFFFF;
+}
+textarea { resize:vertical ; }
+.panel {
+	border-top: 2px solid #3B5998;
+}
+
+.page.ng-enter           
+{ 
+	animation: slideInUp 0.8s both ease-in; 
+	z-index: 8888; 
+}
+.page.ng-leave 
+{
+	animation: slideOutLeft 0.4s both ease-out;
+	z-index: 9999;
+}
+

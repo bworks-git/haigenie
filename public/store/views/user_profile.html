@@ -1,0 +1,292 @@
+
+
+<div class="container-fluid" style="margin-top:30px;">
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<ul class="nav nav-pills nav-justified thumbnail setup-panel">
+				<li class="active"><a href="#step-1">
+					<h6 class="list-group-item-heading">User Summary</h6>
+				</a></li>
+				<li class=""><a href="#step-2">
+					<h6 class="list-group-item-heading">User Address</h6>
+				</a></li>
+				<li class=""><a href="#step-3">
+					<h6 class="list-group-item-heading">Change Password</h6>
+				</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row setup-content" id="step-1">
+		<div class="col-xs-12">
+			<div class="wizard_blk text-center">
+				 <form class="login-form" >					
+					<h5 class="text-left">User Summary</h5>
+					<div class="col-md-6">				
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="usernameid1" type="text" ng-model="name">
+							<label ng-if="name != '' " class="active ;" for="usernameid1">Name * </label>
+							<label ng-if="name == '' " for="usernameid1">Name * </label>
+						  </div>
+						</div>
+						
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="mobilnoid1" type="text" ng-model="mobile">
+							<label ng-if="mobile != '' " class="active ;" for="mobilnoid1">Mobile Number</label>
+							<label ng-if="mobile == '' "  for="mobilnoid1">Mobile Number</label>
+						  </div>
+						</div>
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="mobilnoid2" type="text" ng-model="alternate_mobile">
+							<label ng-if="alternate_mobile != '' " class="active ;" for="mobilnoid2" class="center-align">Alternate Number</label>
+							<label ng-if="alternate_mobile== '' " for="mobilnoid2" class="center-align">Alternate Number</label>
+						  </div>
+						</div>
+										
+					</div>
+					
+					<div class="col-md-6">
+					
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input  id="emailid1" type="email" ng-model="email">
+							<label ng-if="email != '' " class="active ;" for="emailid1">Email</label>
+							<label ng-if="email == '' "  for="emailid1">Email</label>
+						  </div>
+						</div>
+						<div class="row margin">
+						  <div class="input-field col s12" style="margin:20px 0 30px;">
+							<label for="gender_group" style="margin:5px 10px 0 0;" class="">Gender</label>
+							 
+								<input class="with-gap" name="gender_group" type="radio" id="male_genderid" checked />
+								<label for="male_genderid">Male</label>
+							 
+								<input class="with-gap" name="gender_group" type="radio" id="female_genderid" />
+								<label for="female_genderid">Female</label>
+							 
+						  </div>
+						</div>
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="birthdate_select" type="text" class="datepicker" ng-model="birthdate">
+							<label class="active" for="birthdate_select" class="">Birthdate</label>
+						  </div>
+						</div>
+					
+					</div>
+					
+					<div class="row">
+						<div class="col l12">
+							<p class="checkbox_blk1">
+							  <input type="checkbox" id="filled-in-box1" checked="checked" />
+							  <label for="filled-in-box1">Subscribe to Haigenie Newsletter </label>
+							</p>
+							 <p class="checkbox_blk1">
+							  <input type="checkbox" id="filled-in-box2" checked="checked" />
+							  <label for="filled-in-box2">Keep me posted by Haigenie SMS </label>
+							</p>
+						</div>
+					</div>
+					
+					<div class="row margin">
+						<div class="col l12">
+							<p class="checkbox_blk1"><input type="submit" ng-click="updateInfo()" class="btn btn-primary" value="Update" /></p>
+						</div>
+					</div>
+				
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row setup-content" id="step-2">
+		<div class="col-xs-12">
+			<div class="wizard_blk">
+			   
+				<form class="login-form">					
+					<h5 class="text-left">User Summary</h5>
+					<div class="col-md-6">				
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="usernameid1" type="text" ng-model="doorno">
+							<label ng-if="doorno != '' " class="active ;" for="usernameid1">Block / Door No * </label>
+							<label ng-if="doorno == '' "  for="usernameid1">Block / Door No * </label>
+						  </div>
+						</div>
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="lastnameid1" type="text" ng-model="street1">
+							<label ng-if="street1 != '' " class="active ;" for="lastnameid1">Street 1 * </label>
+							<label ng-if="street1 == '' "  for="lastnameid1">Street 1 * </label>
+						  </div>
+						</div>
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="mobilnoid1" type="text" ng-model="street2">
+							<label ng-if="street2 != '' " class="active ;" for="mobilnoid1">Street 2 </label>
+							<label ng-if="street2 == '' " for="mobilnoid1">Street 2 </label>
+						  </div>
+						</div>
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="mobilnoid2" type="text" ng-model="area">
+							<label ng-if="area != '' " class="active ;" for="mobilnoid2" class="center-align">Area *</label>
+							<label ng-if="area == '' "  for="mobilnoid2" class="center-align">Area *</label>
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="input-field col s12">
+							<input id="mobilnoid2" type="text" ng-model="landmark">
+							<label ng-if="landmark != '' " class="active ;" for="mobilnoid2" class="center-align">Landmark</label>
+							<label ng-if="landmark == '' "  for="mobilnoid2" class="center-align">Landmark</label>
+						  </div>
+						</div>
+										
+					</div>
+					
+					<div class="col-md-6">
+					
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="countryid" type="text" ng-model="country">
+							<label ng-if="country != '' " class="active ;" for="countryid" class="center-align">Country</label>
+							<label ng-if="country == '' "  for="countryid" class="center-align">Country</label>
+							 
+							  
+						  </div>
+						</div>
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="stateid" type="text" ng-model="state">
+							<label ng-if="state != '' " class="active ;" for="stateid" class="center-align">State</label>
+							<label ng-if="state == '' "  for="stateid" class="center-align">State</label>
+							
+							 <!-- <select>
+								<option value="" selected>State</option>
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+							  </select> -->
+						  </div>
+						</div>
+						<div class="row margin">
+						  <div class="input-field col s12">
+							<input id="cityid" type="text" ng-model="city">
+							<label ng-if="city != '' " class="active ;" for="cityid" class="center-align ">City</label>
+							<label ng-if="city == '' "  for="cityid" class="center-align ">City</label>
+							
+							  <!--<select>
+								<option value="" disabled selected>City</option>
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+							  </select> -->
+						  </div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12" style="margin:20px 0 30px;">
+								<input id="pincodeid" type="text" ng-model="pincode">
+								<label ng-if="pincode != '' " class="active ;" for="pincodeid" class="center-align">Pin code *</label>
+								<label ng-if="pincode == '' "  for="pincodeid" class="center-align">Pin code *</label>
+							</div>
+						</div>
+					
+					</div>
+					
+					
+					<div class="row margin">
+						<div class="col l12">
+							<p class="checkbox_blk1"><input type="submit" ng-click="updateAddress()" class="btn btn-primary" value="Update Address" /></p>
+						</div>
+					</div>
+				
+				</form>
+			   
+			   
+			</div>
+		</div>
+	</div>
+	<div class="row setup-content" id="step-3">
+		<div class="col-xs-12">
+			<div class="wizard_blk">
+				
+				<form class="login-form">
+			   
+			   <div class="row margin">
+				  <div class="input-field col s12">
+					<input id="email" type="text" ng-model="email1" disabled>
+					<label for="email" class="center-align active">Mail Id</label>
+				  </div>
+				</div>
+				<div class="row margin">
+				  <div class="input-field col s12">
+					<input id="password" type="password" ng-model="password_old" required>
+					<label for="password">Old Password</label>
+				  </div>
+				</div>
+				<div class="row margin">
+				  <div class="input-field col s12">
+					<input id="newpassword" type="password" ng-model="password1" required>
+					<label for="newpassword">New Password</label>
+				  </div>
+				</div>
+				<div class="row">
+				  <div class="input-field col s12">
+					<input id="cnfpassword" type="password" ng-model="password2" required>
+					<label for="cnfpassword">Confirm Password</label>
+				  </div>
+				</div>
+			
+				<div class="row margin">
+					<div class="col l12">
+						<p class=""><input type="submit" class="btn btn-primary" ng-click="updatePassword()" value="Update Password" /></p>
+					</div>
+				</div>
+				
+				</form>
+			   
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+
+/*$('.datepicker').pickadate({
+selectMonths: true,
+selectYears: 200birthdate_select
+});*/
+$('#birthdate_select').datepicker({
+});
+$(document).ready(function() {
+
+var navListItems = $('ul.setup-panel li a'),
+    allWells = $('.setup-content');
+
+allWells.hide();
+
+navListItems.click(function(e)
+{
+    e.preventDefault();
+    var $target = $($(this).attr('href')),
+        $item = $(this).closest('li');
+    
+    if (!$item.hasClass('disabled')) {
+        navListItems.closest('li').removeClass('active');
+        $item.addClass('active');
+        allWells.hide();
+        $target.show();
+    }
+});
+
+$('ul.setup-panel li.active a').trigger('click');
+
+});
+
+
+</script>
+
+

@@ -1,0 +1,45 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-5">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<form ng-submit="postPromotion()">
+						<input ng-model="name" placeholder="Name" class="form-control" required>
+						<input ng-model="freebie" placeholder="Freebie" class="form-control" >
+						<input ng-model="discount" placeholder="Price Discount" class="form-control" ><br/>
+						<input type="submit" class="btn btn-primary" value="Create" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div><br/>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>S.no</th>
+								<th>Name</th>
+								<th>Freebie</th>
+								<th>price discount</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, promotion) in promotions">
+								<td>{{ key+1 }}</td>
+								<td>{{ promotion.name }}</td>
+								<td>{{ promotion.freebie }}</td>
+								<td>{{ promotion.discount }}</td>
+								<td><a ng-click="deletePromotion(promotion._id)" class="btn btn-danger">delete</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

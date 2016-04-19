@@ -1,0 +1,271 @@
+<header>		
+		<div class="head_out navbar-fixed">		
+			<div class="fixed_nav">
+				<div class="htop z-depth-1">
+					<div class="center">
+						<div class="clearfix text-center">
+							<div class="htoplft">
+								<a class="logo1"><img src="store/images/logo_icon.png" alt="haigenie" /></a>
+							</div>
+							<div class="htoplft">
+								<a class="logo" title="haigenie"><img src="store/images/logo.png" alt="haigenie" /></a>
+							</div>
+							
+							<div class="htop_cntr">
+								<div class="search_blk">
+									<div class="search_select_blk">
+										<select>
+										  <option value="" disabled selected>All Category</option>
+										  <option value="1">Oils</option>
+										  <option value="2">Cerrals</option>
+										  <option value="3">Powder</option>
+										</select>
+										<i class="material-icons">keyboard_arrow_down</i>
+									</div>
+									<input type="text" placeholder="Organic Search" name="search">
+									<a name="serch_btn" class="waves-effect waves-light btn"><i class="material-icons small">search</i></a>
+								</div>
+								
+							</div>
+							
+							<div class="htoprht">
+								<ul class="newuser_icnlst">
+									<li>
+										<a class="dropdown-button"  data-activates="userdrpdwn_id" title="User">
+											<i class="material-icons">account_circle</i><span class="material-icons">keyboard_arrow_down</span></a>
+										<ul id="userdrpdwn_id" class="dropdown-content" ng-if="loggedIn!='no'">
+											<li><a class="modal-trigger" href="#login-page">Login</a></li>
+											<li><a href="javascript:;">Register</a></li>
+											<li><a href="javascript:;" data-activates="myprofileid" class="button-collapse" title="My Profile">My Profile</a></li>										
+											<li><a href="javascript:;" data-activates="myorderid" title="My Order" class="button-collapse">My Order</a></li>											
+											<li><a ng-click="logout()">Logout</a></li>
+										 </ul>
+									</li>								
+									<li><a href="javascript:;" data-activates="wishlistid" title="WishList" class="button-collapse hwishlst"><i class="material-icons">favorite_border</i></a></li>
+									<li><a href="javascript:;" data-activates="slide-out-cartid" title="Cart" class="cart button-collapse"><i class="material-icons">add_shopping_cart</i><span class="badge">{{ cart_count }}</span></a></li>
+								</ul>
+								<!-- Cart products start -->
+								<div id="slide-out-cartid" class="side-nav">
+									<div class="myorder_sec">
+										<a class="side_nav_close" onclick="$('#slide-out-cartid').sideNav('hide');"><i class="material-icons">highlight_off</i></a>
+										<div class="title1">My Cart</div>
+										<table class="cart_tbl">
+											<tr class="carttbl_head">
+												<th width="80">Image</th>
+												<th width="5"></th>
+												<th width="180">Order Items</th>
+												<th width="5"></th>
+												<th width="80">Quantity</th>
+												<th width="5"></th>
+												<th width="150">No of Item</th>														
+												<th width="5"></th>
+												<th width="90">Total Prize </th>
+												<th width="20"></th>
+												<th width="70">Delete</th>
+											</tr>
+											<tr>
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="store/images/Products/rev_product.png" class="Product"></a>
+												</td>
+												<td></td>
+												<td>Carrot</td>
+												<td></td>
+												<td>500 gram</td>
+												<td></td>
+												<td>
+													<a href="javascript:;" class="adedprod_cnt"><i class="material-icons">remove_circle</i></a>
+													<p class="adedprod_quan"><span id="">2</span></p>
+													<a href="javascript:;" class="adedprod_cnt"><i class="material-icons">add_circle</i></a>
+												</td>													
+												<td></td>
+												<td><i class="fa fa-rupee"></i>450</td>
+												<td></td>
+												<td><a class="adedprod_rmve"><i class="material-icons">clear</i></a></td>
+											</tr>
+
+											<tr class="trbg">
+												<td colspan="6"><div class="ordr_lftblk">sub total</div>  </td>
+												<td colspan="5"><div class="ordr_rhtblk"><i class="fa fa-rupee"></i>200</div></td>
+											</tr>
+											
+											<tr class="trbg">
+												<td colspan="6"><div class="ordr_lftblk">Shipping Charge</div>  </td>
+												<td colspan="5"><div class="ordr_rhtblk"><i class="fa fa-rupee"></i>2</div></td>
+											</tr>
+											<tr class="ord_total">
+												<td colspan="6"><div class="ordr_lftblk">Grand Total</div>  </td>
+												<td colspan="5"><div class="ordr_rhtblk"><i class="fa fa-rupee"></i>210</div></td>
+											</tr>
+											
+										</table>
+										<br/>
+										<div class="row"><div class="col push-l4 l4"><a class="btn text-white modal-trigger" onclick="$('#slide-out-cartid').sideNav('hide');" href="#checkout_modalid">Complete Order</a></div></div>
+									</div>
+								</div>
+								<!-- Cart products End -->
+								
+								<!-- Myorder products start -->
+								<div id="myorderid" class="side-nav">
+									
+									<div class="myorder_sec">
+									<a class="side_nav_close" onclick="$('#myorderid').sideNav('hide');"><i class="material-icons">highlight_off</i></a>
+									<div class="title1">My Orders</div>
+										<table class="cart_tbl">
+											<tr class="carttbl_head">
+												<th width="80">Image</th>											
+												<th width="20"></th>
+												<th width="100">Order Id</th>
+												<th width="20"></th>
+												<th width="200">Order Name</th>
+												<th width="20"></th>
+												<th width="150">Quantity</th>
+												<th width="20"></th>
+												<th width="70">No of Item</th>
+												<th width="20"></th>
+												<th width="80">UnitPrize</th>
+												<th width="20"></th>
+												<th width="110">Total</th>
+												<th width="30"></th>
+												<th width="120">Status</th>
+											</tr>
+											<tr>											
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="store/images/Products/rev_product.png" class="Product"></a>
+												</td>
+												<td></td>
+												<td>Ord1</td>
+												<td></td>
+												<td> Carrot </td>
+												<td></td>
+												<td>500 gram</td>
+												<td></td>
+												<td>2</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>150</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>300</td>
+												<td></td>
+												<td><span class="ord_suces">Sucess!</span></td>
+											</tr>
+											<tr>											
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="store/images/Products/rev_product.png" class="Product"></a>
+												</td>
+												<td></td>
+												<td>Ord2</td>
+												<td></td>
+												<td> Carrot </td>
+												<td></td>
+												<td>500 gram</td>
+												<td></td>
+												<td>2</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>150</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>300</td>
+												<td></td>
+												<td><span class="ord_pending">Pending</span></td>
+											</tr>
+											<tr>											
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="store/images/Products/rev_product.png" class="Product"></a>
+												</td>
+												<td></td>
+												<td>Ord3</td>
+												<td></td>
+												<td> Carrot </td>
+												<td></td>
+												<td>500 gram</td>
+												<td></td>
+												<td>2</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>150</td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>300</td>
+												<td></td>
+												<td><span class="ord_cancel">Cancelled.</span></td>
+											</tr>
+										</table>
+									</div>
+									
+								</div>
+								<!-- Myorder products end -->
+								
+								<!-- WishList products start -->
+								<div id="wishlistid" class="side-nav">
+									<div class="wishlist_sec">
+									<a class="side_nav_close" onclick="$('#wishlistid').sideNav('hide');"><i class="material-icons">highlight_off</i></a>
+									<div class="title1">Wishlist</div>
+										<table class="cart_tbl">
+											<tr class="carttbl_head">
+												<th width="80">Image</th>
+												<th width="20"></th>
+												<th width="200">Order Name</th>
+												<th width="20"></th>
+												<th width="100">Quantity</th>
+												<th width="20"></th>
+												<th width="80">UnitPrize</th>
+												<th width="20"></th>
+												<th width="180">Category</th>
+												<th width="20"></th>
+												<th width="70">Delete</th>
+											</tr>
+											<tr>
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="store/images/Products/rev_product.png" class="Product"></a>
+												</td>
+												<td></td>
+												<td> Carrot </td>
+												<td></td>
+												<td> 1 Kg </td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>199</td>
+												<td></td>
+												<td>Vegetables</td>
+												<td></td>
+												<td><a class="adedprod_rmve"><i class="material-icons">clear</i></a></td>
+											</tr>
+											<tr>
+												<td>
+													<a title="" href="javascript:;"><img alt="Food" src="store/images/Products/rev_product.png" class="Product"></a>
+												</td>
+												<td></td>
+												<td> Carrot </td>
+												<td></td>
+												<td> 1 Kg </td>
+												<td></td>
+												<td><i class="fa fa-rupee"></i>199</td>
+												<td></td>
+												<td>Vegetables</td>
+												<td></td>
+												<td><a class="adedprod_rmve"><i class="material-icons">clear</i></a></td>
+											</tr>
+										</table>
+									</div>
+									
+								</div>
+								<!-- WishList products end -->
+								<!-- Home Cart Slide  start -->
+								<script>											
+								  $('.button-collapse').sideNav({
+									  menuWidth: 600, // Default is 240
+									  edge: 'right', // Choose the horizontal origin
+									  closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
+									}
+								  );   
+									 $(document).ready(function(){									 
+										// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+										// $('.modal-trigger').leanModal();
+										 $('.dropdown-button').dropdown();	
+									  });
+								</script>
+								<!-- Home Cart Slide  end -->
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div> <!--  Fixed nav end -->
+		</div>
+	</header>
+	

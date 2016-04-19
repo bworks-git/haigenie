@@ -1,0 +1,97 @@
+<div id="logo-animation">
+				<div class="logoanim_blk"><div class="logoanim" style="left: -5%;"></div></div>
+			</div>
+	<footer>
+		<div class="ftop">
+			<?php /* <div id="logo-animation">
+				<div class="logoanim_blk"><div class="logoanim" style="left: -5%;"></div></div>
+			</div> */ ?>
+			<div class="ftop_in">
+				<div class="center">
+					<div class="fbox">
+						<h5 class="title1">Company</h5>
+						<ul class="fbox_lst">
+							<li><a href="javascript:;" title="">About Us</a></li>
+							<li><a href="javascript:;" title="">Terms & Conditions</a></li>
+							<li><a href="javascript:;" title="">Privacy Policy</a></li>
+							<li><a href="javascript:;" title="">Contact Us</a></li>
+						</ul>
+					</div>
+					<div class="fbox">
+						<h5 class="title1">Profile</h5>
+						<ul class="fbox_lst">
+							<li><a href="javascript:;" title="">My Account</a></li>
+							<li><a href="javascript:;" title="">Wishlist</a></li>
+							<li><a href="javascript:;" title="">Order History</a></li>
+						</ul>
+					</div>
+					<div class="fbox">
+						<h5 class="title1">Contact Us</h5>
+						<ul class="fbox_lst">
+							<li><a href="javascript:;" title=""><i class="fa fa-envelope-o"></i> care@haigenie.com</a></li>
+							<li><a href="javascript:;" title="" class="num_font"><i class="fa fa-mobile"></i> +91 9943 9943 22</a></li>
+							<li>Coimbatore</li>
+						</ul>
+					</div>
+					<div class="fbox">
+						<h5 class="title1">Follow Us</h5>
+						<ul class="fbox_lst">
+							<li><a href="javascript:;" title=""><i class="fa fa-facebook-square"></i> Facebook</a></li>
+							<li><a href="javascript:;" title=""><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="fpayment_sec">
+				<div class="center">
+					<ul class="">
+						<li><img src="images/payment_methods.png" alt="payment_methods" /></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="fbtm">
+				<div class="center">
+					<p class="cpyrht">Copyright &copy; 2015 Haigeniec. All rights reserved.</p>
+					<p class="dsgnby">Design by <a href="http://bworks.in/" title="Bworks">Bworks Tech Labs</a></p>
+				</div>
+			</div>
+			
+		</div>
+	</footer>
+	<script>                                                        
+            $(document).ready (function() {   
+			/* Popup close */
+				$(".popup_close").click(function () {                                       
+                    $(this).parent().parent().parent().fadeToggle('slow');
+                });               
+				 $(document).keyup (function(e) {
+					if (e.keyCode == 27) {
+						closepopup();
+					}
+				});
+	/* Window scroll & Image move */
+				$(window).scroll(function() {
+					if ( $('.logoanim_blk').length ) {
+						$(".logoanim_blk").find('.logoanim').each(function(i, el) {
+							var logoanim = $(this),
+								$w = $(window),
+								windowTop = $w.scrollTop(),	
+								windowBottom = windowTop + $w.height(),
+								logoanimTop = logoanim.offset().top,
+								logoanimBottom = logoanimTop + logoanim.height(),
+								logoanimStart = windowBottom - logoanimTop,
+								logoanimStop = windowBottom - logoanimBottom;
+
+							if ( logoanimStart > 0 < logoanimStop ) {
+								logoanim.css({
+									'left': Math.floor((logoanimStart / $w.height()) * 100) + '%'
+								});
+							}
+						});
+					}
+				});
+				/* Window scroll & Image move */
+            });                        
+        </script> 
